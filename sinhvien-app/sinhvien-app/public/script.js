@@ -9,10 +9,7 @@ const connBadge = el('connBadge');
 const statusMsg = el('statusMsg');
 
 
-// ==============================
 // HIỂN THỊ THÔNG BÁO
-// ==============================
-
 function showStatus(msg, isErr = false) {
     statusMsg.textContent = msg;
     statusMsg.classList.remove('hidden');
@@ -20,10 +17,7 @@ function showStatus(msg, isErr = false) {
 }
 
 
-// ==============================
 // CHỐNG CHÈN HTML
-// ==============================
-
 function escapeHtml(s) {
     const d = document.createElement('div');
     d.innerText = s == null ? '' : s;
@@ -31,10 +25,7 @@ function escapeHtml(s) {
 }
 
 
-// ==============================
 // SELECT
-// ==============================
-
 async function selectData() {
 
     try {
@@ -78,10 +69,7 @@ async function selectData() {
 }
 
 
-// ==============================
 // HIỂN THỊ BẢNG
-// ==============================
-
 function renderTable() {
 
     tbody.innerHTML = '';
@@ -134,10 +122,7 @@ function renderTable() {
 }
 
 
-// ==============================
 // CLICK NÚT SỬA / XÓA TRÊN BẢNG
-// ==============================
-
 tbody.addEventListener('click', e => {
 
     const editBtn =
@@ -162,10 +147,7 @@ tbody.addEventListener('click', e => {
 });
 
 
-// ==============================
 // ĐƯA SINH VIÊN VÀO FORM
-// ==============================
-
 function loadIntoForm(maso) {
 
     const s = students.find(
@@ -189,10 +171,7 @@ function loadIntoForm(maso) {
 }
 
 
-// ==============================
 // XÓA FORM
-// ==============================
-
 function clearForm() {
 
     editingMaSo = null;
@@ -205,10 +184,7 @@ function clearForm() {
 }
 
 
-// ==============================
 // INSERT
-// ==============================
-
 el('btnInsert').addEventListener(
     'click',
     async () => {
@@ -272,10 +248,7 @@ el('btnInsert').addEventListener(
 );
 
 
-// ==============================
 // UPDATE
-// ==============================
-
 el('btnUpdate').addEventListener(
     'click',
     async () => {
@@ -345,10 +318,7 @@ el('btnUpdate').addEventListener(
 );
 
 
-// ==============================
 // DELETE
-// ==============================
-
 async function deleteStudent(maso) {
 
     const s = students.find(
@@ -404,10 +374,7 @@ async function deleteStudent(maso) {
 }
 
 
-// ==============================
 // NÚT DELETE TRONG FORM
-// ==============================
-
 el('btnDelete').addEventListener(
     'click',
     () => {
@@ -432,18 +399,11 @@ el('btnDelete').addEventListener(
 );
 
 
-// ==============================
 // NÚT SELECT
-// ==============================
-
 el('btnSelect').addEventListener(
     'click',
     selectData
 );
 
-
-// ==============================
 // KHỞI ĐỘNG
-// ==============================
-
 selectData();
