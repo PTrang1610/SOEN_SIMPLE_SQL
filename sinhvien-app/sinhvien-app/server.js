@@ -8,7 +8,7 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-// ---------- Cấu hình kết nối SQL Server ----------
+//Cấu hình kết nối SQL Server
 const config = {
   server: process.env.DB_SERVER,
   database: process.env.DB_DATABASE,
@@ -32,11 +32,11 @@ let pool;
 async function getPool() {
   if (pool) return pool;
   pool = await sql.connect(config);
-  console.log('✅ Đã kết nối SQL Server:', process.env.DB_SERVER, '/', process.env.DB_DATABASE);
+  console.log('Đã kết nối SQL Server:', process.env.DB_SERVER, '/', process.env.DB_DATABASE);
   return pool;
 }
 
-// ---------- API: SELECT - Lấy danh sách (chỉ MaSo + HoTen cho danh sách gọn) ----------
+//API: SELECT - Lấy danh sách (chỉ MaSo + HoTen cho danh sách gọn)
 app.get('/api/sinhvien', async (req, res) => {
   try {
     const p = await getPool();
@@ -48,7 +48,7 @@ app.get('/api/sinhvien', async (req, res) => {
   }
 });
 
-// ---------- API: SELECT - Lấy chi tiết 1 sinh viên theo MaSo (khi click) ----------
+//API: SELECT - Lấy chi tiết 1 sinh viên theo MaSo (khi click) 
 app.get('/api/sinhvien/:maso', async (req, res) => {
   try {
     const p = await getPool();
@@ -65,7 +65,7 @@ app.get('/api/sinhvien/:maso', async (req, res) => {
   }
 });
 
-// ---------- API: INSERT - Thêm sinh viên mới ----------
+// API: INSERT - Thêm sinh viên mới 
 app.post('/api/sinhvien', async (req, res) => {
   const { MaSo, HoTen, DiaChi } = req.body;
   if (!MaSo || !HoTen || !DiaChi) {
@@ -89,7 +89,7 @@ app.post('/api/sinhvien', async (req, res) => {
   }
 });
 
-// ---------- API: UPDATE - Cập nhật sinh viên theo MaSo ----------
+// API: UPDATE - Cập nhật sinh viên theo MaSo 
 app.put('/api/sinhvien/:maso', async (req, res) => {
   const { HoTen, DiaChi } = req.body;
   if (!HoTen || !DiaChi) {
@@ -112,7 +112,7 @@ app.put('/api/sinhvien/:maso', async (req, res) => {
   }
 });
 
-// ---------- API: DELETE - Xóa sinh viên theo MaSo ----------
+// API: DELETE - Xóa sinh viên theo MaSo 
 app.delete('/api/sinhvien/:maso', async (req, res) => {
   try {
     const p = await getPool();
@@ -131,5 +131,5 @@ app.delete('/api/sinhvien/:maso', async (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`🚀 Server đang chạy tại http://localhost:${PORT}`);
+  console.log(`Server đang chạy tại http://localhost:${PORT}`);
 });
