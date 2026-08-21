@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hệ thống quản lý sinh viên - CRUD</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<body>
+
+<div class="topbar"></div>
+
+<div class="page">
+  <div class="card">
+    <div class="card-header">
+      <h1>HỆ THỐNG QUẢN LÝ SINH VIÊN - CRUD INTERFACE</h1>
+      <span class="conn-badge" id="connBadge">● Đang kết nối...</span>
+    </div>
+
+    <!-- Bảng dữ liệu -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th class="col-id">STT</th>
+            <th>Họ và Tên</th>
+            <th>Mã số sinh viên</th>
+            <th>Địa chỉ</th>
+            <th class="col-action">Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+      <div class="empty-row" id="emptyRow">Chưa có dữ liệu — bấm "Hiển thị Dữ liệu (SELECT)"</div>
+    </div>
+
+    <!-- Form nhập/sửa -->
+    <h2 class="section-title">NHẬP/SỬA THÔNG TIN SINH VIÊN</h2>
+    <form id="studentForm">
+      <div class="form-grid">
+        <div class="field">
+          <label>Mã số sinh viên</label>
+          <input type="text" id="fMaSo" placeholder="SV006">
+        </div>
+        <div class="field">
+          <label>Họ và Tên</label>
+          <input type="text" id="fHoTen" placeholder="Nguyễn Văn A">
+        </div>
+      </div>
+      <div class="field field-full">
+        <label>Địa chỉ</label>
+        <input type="text" id="fDiaChi" placeholder="Hà Nội">
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn btn-blue" id="btnSelect">🔍 Hiển thị Dữ liệu (SELECT)</button>
+        <button type="button" class="btn btn-green" id="btnInsert">➕ Thêm mới (INSERT)</button>
+        <button type="button" class="btn btn-orange" id="btnUpdate">✎ Cập nhật (UPDATE)</button>
+        <button type="button" class="btn btn-red" id="btnDelete">🗑 Xóa dữ liệu (DELETE)</button>
+      </div>
+    </form>
+
+    <div class="status-msg hidden" id="statusMsg"></div>
+  </div>
+</div>
+
+<script>
+const SUPABASE_URL =
+    "https://ebwejfhfhclohfxxfvbn.supabase.co";
+
+const SUPABASE_KEY =
+    "sb_publishable_Y2Ke45hDwKcobjWjLLl0tA_2Bax5HMR";
+
+const db = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
